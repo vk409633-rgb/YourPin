@@ -310,7 +310,7 @@ export default function PinterestDownloader() {
                     <ol className={styles.instructionsList}>
                         <li>Copy the Pinterest video URL from your browser</li>
                         <li>Paste it into the input field above</li>
-                        <li>Click "Get Video" to fetch the download links</li>
+                        <li>Click &quot;Get Video&quot; to fetch the download links</li>
                         <li>Download your video in high quality</li>
                         <li>🎁 <strong>Pro Tip:</strong> Watch a short ad to unlock batch downloads and HD quality!</li>
                     </ol>

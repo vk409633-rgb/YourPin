@@ -46,7 +46,7 @@ export default function AboutPage() {
                                 <div className={styles.feature}>
                                     <div className={styles.featureIcon}>🔒</div>
                                     <h3>Secure & Private</h3>
-                                    <p>We don't store your data. All processing happens in real-time.</p>
+                                    <p>We don&apos;t store your data. All processing happens in real-time.</p>
                                 </div>
                                 <div className={styles.feature}>
                                     <div className={styles.featureIcon}>💎</div>
@@ -106,15 +106,15 @@ export default function AboutPage() {
                             <div className={styles.values}>
                                 <div className={styles.value}>
                                     <h3>Transparency</h3>
-                                    <p>We're open about how we operate and what data we collect (spoiler: very little).</p>
+                                    <p>We&apos;re open about how we operate and what data we collect (spoiler: very little).</p>
                                 </div>
                                 <div className={styles.value}>
                                     <h3>User Privacy</h3>
-                                    <p>Your privacy is paramount. We don't track, store, or sell your information.</p>
+                                    <p>Your privacy is paramount. We don&apos;t track, store, or sell your information.</p>
                                 </div>
                                 <div className={styles.value}>
                                     <h3>Quality Service</h3>
-                                    <p>We're committed to providing reliable, high-quality downloads every time.</p>
+                                    <p>We&apos;re committed to providing reliable, high-quality downloads every time.</p>
                                 </div>
                                 <div className={styles.value}>
                                     <h3>Accessibility</h3>

@@ -139,6 +139,7 @@ export const PAGE_TYPE_PRESETS: Record<string, AdPlacement> = {
  * Helper function to get ad slot for placement
  */
 export function getAdSlot(placement: 'auto' | 'content' | 'sidebar' | 'footer'): string {
+    if (placement === 'auto') return ADSENSE_CONFIG.defaultSlot;
     return ADSENSE_CONFIG.slots?.[placement] || ADSENSE_CONFIG.defaultSlot;
 }
 

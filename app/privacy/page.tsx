@@ -42,7 +42,7 @@ export default function PrivacyPage() {
                                 <li><strong>Session Data</strong>: We use browser session storage to remember your pro feature unlocks for 24 hours.</li>
                             </ul>
 
-                            <h3>Information We Don't Collect</h3>
+                            <h3>Information We Don&apos;t Collect</h3>
                             <ul>
                                 <li>❌ We do NOT store your download history</li>
                                 <li>❌ We do NOT collect personal information (name, email, phone)</li>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
                         </section>
 
                         <section className={styles.section}>
-                            <h2>👶 Children's Privacy</h2>
+                            <h2>👶 Children&apos;s Privacy</h2>
                             <p>
                                 Our service is not directed to children under 13. We do not knowingly collect information from children.
                                 If you believe a child has provided us with information, please contact us immediately.
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
                             </p>
                             <ul>
                                 <li>Stop using our service at any time</li>
-                                <li>Clear your browser's session storage</li>
+                                <li>Clear your browser&apos;s session storage</li>
                                 <li>Contact us with privacy concerns</li>
                                 <li>Request information about our data practices</li>
                             </ul>
@@ -161,7 +161,7 @@ export default function PrivacyPage() {
                         <div className={styles.summary}>
                             <h3>📋 Summary</h3>
                             <p>
-                                <strong>In simple terms:</strong> We don't collect, store, or sell your personal information.
+                                <strong>In simple terms:</strong> We don&apos;t collect, store, or sell your personal information.
                                 We only process URLs temporarily to provide our download service. Your privacy is protected by design.
                             </p>
                         </div>

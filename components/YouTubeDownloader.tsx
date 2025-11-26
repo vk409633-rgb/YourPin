@@ -320,7 +320,7 @@ export default function YouTubeDownloader() {
                     <ol className={styles.instructionsList}>
                         <li>Copy any YouTube video URL from your browser</li>
                         <li>Paste it into the input field above</li>
-                        <li>Click "Get Thumbnails" to fetch all available qualities</li>
+                        <li>Click &quot;Get Thumbnails&quot; to fetch all available qualities</li>
                         <li>Choose your preferred quality and download</li>
                         <li>🎁 <strong>Pro Tip:</strong> Watch a short ad to unlock batch downloads and download all qualities at once!</li>
                     </ol>

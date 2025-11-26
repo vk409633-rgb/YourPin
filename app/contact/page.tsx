@@ -44,7 +44,7 @@ export default function ContactPage() {
                         <header className={styles.header}>
                             <h1>Contact Us</h1>
                             <p className={styles.subtitle}>
-                                Have a question or feedback? We'd love to hear from you!
+                                Have a question or feedback? We&apos;d love to hear from you!
                             </p>
                         </header>
 
@@ -125,7 +125,7 @@ export default function ContactPage() {
                                     {status === 'success' && (
                                         <div className={styles.success}>
                                             <span className={styles.successIcon}>✓</span>
-                                            Thank you! Your message has been sent successfully. We'll get back to you soon.
+                                            Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
                                         </div>
                                     )}
 
@@ -162,7 +162,7 @@ export default function ContactPage() {
                                 <div className={styles.infoCard}>
                                     <h2>Get in Touch</h2>
                                     <p>
-                                        We're here to help! Whether you have a question about features, need technical support,
+                                        We&apos;re here to help! Whether you have a question about features, need technical support,
                                         or just want to give feedback, our team is ready to answer all your questions.
                                     </p>
                                 </div>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                                         </details>
                                         <details>
                                             <summary>Do you store my data?</summary>
-                                            <p>No, we don't store any of your personal data or download history. Your privacy is our priority.</p>
+                                            <p>No, we don&apos;t store any of your personal data or download history. Your privacy is our priority.</p>
                                         </details>
                                         <details>
                                             <summary>What formats are supported?</summary>
