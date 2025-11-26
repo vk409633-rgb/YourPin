@@ -1,0 +1,286 @@
+.toolHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.toolIcon {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
+}
+
+.toolTitle {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+}
+
+.toolSubtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Pro Features Banner */
+.proFeaturesBanner {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    flex-wrap: wrap;
+}
+
+.proFeatureItem {
+    flex: 1;
+    min-width: 200px;
+}
+
+.proFeatureItem button {
+    width: 100%;
+    font-size: 0.875rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* Batch Download Section */
+.batchSection {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--radius-lg);
+    animation: slideIn 0.3s ease-out;
+}
+
+.batchTitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.batchDescription {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.95rem;
+}
+
+.batchTextarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    resize: vertical;
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-base);
+}
+
+.batchTextarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+.batchButtons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-md);
+    color: #fca5a5;
+    font-size: 0.95rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+.errorIcon {
+    font-size: 1.25rem;
+}
+
+.result {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.resultHeader {
+    margin-bottom: var(--spacing-lg);
+}
+
+.resultTitle {
+    font-size: 1.25rem;
+    color: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.resultTitle::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    font-size: 0.875rem;
+}
+
+.thumbnailGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.thumbnailCard {
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    border: 1px solid var(--color-border);
+}
+
+.thumbnailCard:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-border-light);
+    box-shadow: var(--shadow-lg);
+}
+
+.thumbnailPreview {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--color-bg-secondary);
+    overflow: hidden;
+}
+
+.thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.thumbnailCard:hover .thumbnailImage {
+    transform: scale(1.05);
+}
+
+.thumbnailInfo {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.thumbnailLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.videoLink {
+    display: flex;
+    justify-content: center;
+}
+
+.instructions {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-secondary);
+}
+
+.instructionsTitle {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+.instructionsList {
+    list-style: none;
+    counter-reset: step-counter;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.instructionsList li {
+    counter-increment: step-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.instructionsList li::before {
+    content: counter(step-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    background: var(--gradient-secondary);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .toolHeader {
+        gap: var(--spacing-md);
+    }
+
+    .toolIcon {
+        font-size: 2.5rem;
+    }
+
+    .toolTitle {
+        font-size: 1.5rem;
+    }
+
+    .proFeaturesBanner {
+        flex-direction: column;
+    }
+
+    .batchButtons {
+        flex-direction: column;
+    }
+
+    .batchButtons button {
+        width: 100%;
+    }
+
+    .thumbnailGrid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,201 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: var(--spacing-lg);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modalContent {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    animation: slideIn 0.3s ease-out;
+}
+
+.modalHeader {
+    padding: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.modalTitle {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-sm);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.modalSubtitle {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+
+.modalSubtitle strong {
+    color: var(--color-primary-light);
+}
+
+.adContainer {
+    padding: var(--spacing-xl);
+}
+
+.adContent {
+    background: var(--color-bg-tertiary);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.adBanner {
+    background: var(--gradient-primary);
+    padding: var(--spacing-md);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.adIcon {
+    font-size: 1.5rem;
+}
+
+.adTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+.adBody {
+    padding: var(--spacing-2xl);
+    text-align: center;
+}
+
+.adAnimation {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.adCircle {
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.adCircle:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.adCircle:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.adText {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+.adText strong {
+    color: var(--color-primary-light);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.adProgress {
+    width: 100%;
+    height: 8px;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--spacing-lg);
+}
+
+.adProgressBar {
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: width 1s linear;
+    border-radius: var(--radius-full);
+}
+
+.adBannerContent {
+    padding: var(--spacing-xl);
+    background: var(--color-bg-primary);
+}
+
+.adBannerGradient {
+    padding: var(--spacing-xl);
+    background: var(--gradient-secondary);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.adBannerGradient h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: var(--spacing-sm);
+}
+
+.adBannerGradient p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.modalFooter {
+    padding: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.modalNote {
+    padding: 0 var(--spacing-xl) var(--spacing-xl);
+    text-align: center;
+    color: var(--color-text-tertiary);
+    font-size: 0.875rem;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .modalContent {
+        max-height: 95vh;
+    }
+
+    .modalTitle {
+        font-size: 1.5rem;
+    }
+
+    .adBody {
+        padding: var(--spacing-lg);
+    }
+}

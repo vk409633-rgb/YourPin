@@ -1,0 +1,94 @@
+.features {
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(180deg, transparent 0%, var(--color-bg-secondary) 50%, transparent 100%);
+}
+
+.featuresHeader {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.featuresTitle {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+}
+
+.featuresSubtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.featureCard {
+    padding: var(--spacing-xl);
+    background: var(--color-bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    animation: fadeIn 0.6s ease-out backwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.featureCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.featureCard:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-border-light);
+    box-shadow: var(--shadow-xl);
+}
+
+.featureCard:hover::before {
+    transform: scaleX(1);
+}
+
+.featureIcon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.4));
+}
+
+.featureTitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.featureDescription {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .features {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .featuresHeader {
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}

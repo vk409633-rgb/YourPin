@@ -1,0 +1,22 @@
+.toolsSection {
+    padding: var(--spacing-3xl) 0;
+    position: relative;
+}
+
+.toolsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .toolsSection {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .toolsGrid {
+        gap: var(--spacing-xl);
+    }
+}

@@ -1,0 +1,269 @@
+.toolHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.toolIcon {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.5));
+}
+
+.toolTitle {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+}
+
+.toolSubtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Pro Features Banner */
+.proFeaturesBanner {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    flex-wrap: wrap;
+}
+
+.proFeatureItem {
+    flex: 1;
+    min-width: 200px;
+}
+
+.proFeatureItem button {
+    width: 100%;
+    font-size: 0.875rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* Batch Download Section */
+.batchSection {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    animation: slideIn 0.3s ease-out;
+}
+
+.batchTitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.batchDescription {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.95rem;
+}
+
+.batchTextarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    resize: vertical;
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-base);
+}
+
+.batchTextarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.batchButtons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-md);
+    color: #fca5a5;
+    font-size: 0.95rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+.errorIcon {
+    font-size: 1.25rem;
+}
+
+.result {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.resultHeader {
+    margin-bottom: var(--spacing-lg);
+}
+
+.resultTitle {
+    font-size: 1.25rem;
+    color: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.resultTitle::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    font-size: 0.875rem;
+}
+
+.preview {
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-tertiary);
+}
+
+.video {
+    width: 100%;
+    max-height: 400px;
+    display: block;
+}
+
+.metadata {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.metadataTitle {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.metadataDescription {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.downloadButtons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.instructions {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-primary);
+}
+
+.instructionsTitle {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+.instructionsList {
+    list-style: none;
+    counter-reset: step-counter;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.instructionsList li {
+    counter-increment: step-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.instructionsList li::before {
+    content: counter(step-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .toolHeader {
+        gap: var(--spacing-md);
+    }
+
+    .toolIcon {
+        font-size: 2.5rem;
+    }
+
+    .toolTitle {
+        font-size: 1.5rem;
+    }
+
+    .proFeaturesBanner {
+        flex-direction: column;
+    }
+
+    .batchButtons {
+        flex-direction: column;
+    }
+
+    .batchButtons button {
+        width: 100%;
+    }
+
+    .downloadButtons {
+        flex-direction: column;
+    }
+
+    .downloadButtons button {
+        width: 100%;
+    }
+}
