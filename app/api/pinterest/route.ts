@@ -49,30 +49,75 @@ export async function POST(request: NextRequest) {
         }
 
         let pinData = null;
+        let csrfToken = '';
+        let cookieString = '';
 
-        // Method 1: Try Internal API
+        // Step 1: Fetch the page to get cookies and CSRF token
+        try {
+            console.log('[Pinterest API] Fetching page to get session...');
+            const pageResponse = await fetch(`https://www.pinterest.com/pin/${pinId}/`, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                },
+            });
+
+            // Extract cookies
+            const setCookieHeader = pageResponse.headers.get('set-cookie');
+            if (setCookieHeader) {
+                cookieString = setCookieHeader;
+                // Simple extraction of csrftoken
+                const match = setCookieHeader.match(/csrftoken=([a-zA-Z0-9]+)/);
+                if (match && match[1]) {
+                    csrfToken = match[1];
+                    console.log('[Pinterest API] Got CSRF token:', csrfToken);
+                }
+            }
+        } catch (e) {
+            console.error('[Pinterest API] Failed to initialize session:', e);
+        }
+
+        // Step 2: Call Internal API with the token
         try {
             const pinterestApiUrl = `https://www.pinterest.com/resource/PinResource/get/?source_url=/pin/${pinId}/&data={"options":{"field_set_key":"detailed","id":"${pinId}"},"context":{}}`;
 
-            const response = await fetch(pinterestApiUrl, {
-                headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Referer': 'https://www.pinterest.com/'
-                },
-            });
+            console.log(`[Pinterest API] Attempting to fetch pin ${pinId} via internal API with token...`);
+
+            const headers: Record<string, string> = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Referer': 'https://www.pinterest.com/',
+            };
+
+            if (csrfToken) {
+                headers['X-CSRFToken'] = csrfToken;
+            }
+            if (cookieString) {
+                headers['Cookie'] = cookieString;
+            }
+
+            const response = await fetch(pinterestApiUrl, { headers });
+
+            console.log(`[Pinterest API] Response status: ${response.status}`);
 
             if (response.ok) {
                 const data = await response.json();
                 pinData = data?.resource_response?.data;
+                if (pinData) {
+                    console.log('[Pinterest API] Successfully fetched data via internal API');
+                } else {
+                    console.log('[Pinterest API] API responded but no data found in response');
+                }
+            } else {
+                console.log('[Pinterest API] API request failed with status:', response.status);
             }
         } catch (e) {
-            console.log('API method failed, trying fallback...');
+            console.log('[Pinterest API] API method failed:', e instanceof Error ? e.message : 'Unknown error');
         }
 
-        // Method 2: Fallback to Page Scraping
+        // Method 3: Fallback to Page Scraping (if API failed)
         if (!pinData) {
             try {
+                console.log('[Pinterest API] Using fallback scraping method...');
                 const pageUrl = `https://www.pinterest.com/pin/${pinId}/`;
                 const response = await fetch(pageUrl, {
                     headers: {
@@ -80,23 +125,49 @@ export async function POST(request: NextRequest) {
                     },
                 });
 
+                console.log(`[Pinterest API] Scraping response status: ${response.status}`);
+
                 if (response.ok) {
                     const html = await response.text();
 
                     // Look for __PWS_DATA__ script
+                    let jsonData = null;
                     const match = html.match(/<script id="__PWS_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
                     if (match && match[1]) {
-                        const jsonData = JSON.parse(match[1]);
-                        // Navigate to find pin data
-                        // Structure usually: props.initialReduxState.pins[pinId]
-                        const pins = jsonData?.props?.initialReduxState?.pins;
-                        if (pins && pins[pinId]) {
-                            pinData = pins[pinId];
+                        try {
+                            jsonData = JSON.parse(match[1]);
+                        } catch (e) {
+                            console.error('[Pinterest API] Failed to parse __PWS_DATA__');
+                        }
+                    }
+
+                    // Look for __PWS_INITIAL_PROPS__ script
+                    let initialProps = null;
+                    const matchProps = html.match(/<script id="__PWS_INITIAL_PROPS__" type="application\/json">([\s\S]*?)<\/script>/);
+                    if (matchProps && matchProps[1]) {
+                        try {
+                            initialProps = JSON.parse(matchProps[1]);
+                        } catch (e) {
+                            console.error('[Pinterest API] Failed to parse __PWS_INITIAL_PROPS__');
+                        }
+                    }
+
+                    // Try to find pin data in __PWS_DATA__
+                    if (jsonData?.props?.initialReduxState?.pins && jsonData.props.initialReduxState.pins[pinId]) {
+                        pinData = jsonData.props.initialReduxState.pins[pinId];
+                        console.log('[Pinterest API] Found pin data in __PWS_DATA__');
+                    }
+
+                    // Try to find pin data in __PWS_INITIAL_PROPS__
+                    if (!pinData && initialProps) {
+                        if (initialProps.initialReduxState?.pins && initialProps.initialReduxState.pins[pinId]) {
+                            pinData = initialProps.initialReduxState.pins[pinId];
+                            console.log('[Pinterest API] Found pin data in __PWS_INITIAL_PROPS__');
                         }
                     }
                 }
             } catch (e) {
-                console.error('Fallback scraping failed:', e);
+                console.error('[Pinterest API] Fallback scraping failed:', e instanceof Error ? e.message : 'Unknown error');
             }
         }
 
@@ -164,11 +235,6 @@ export async function POST(request: NextRequest) {
         if (videoUrl && videoUrl.startsWith('/')) {
             videoUrl = `https:${videoUrl}`;
         }
-
-        // Fix .m3u8 URLs (HLS) if needed - sometimes we want mp4
-        // But for now, let's return what we found. The frontend video player handles HLS often, 
-        // or we might need to find the .mp4 version if available.
-        // Pinterest usually provides .mp4 in the V_720P or similar keys.
 
         return NextResponse.json({
             success: true,

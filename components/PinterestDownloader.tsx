@@ -62,11 +62,11 @@ export default function PinterestDownloader() {
     };
 
     const downloadFile = (fileUrl: string, filename: string) => {
+        // Use the server-side download proxy to handle CORS issues
+        const proxyUrl = `/api/download?url=${encodeURIComponent(fileUrl)}&filename=${encodeURIComponent(filename)}`;
         const link = document.createElement('a');
-        link.href = fileUrl;
+        link.href = proxyUrl;
         link.download = filename;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
